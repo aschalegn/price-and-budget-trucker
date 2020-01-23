@@ -1,12 +1,10 @@
 const express = require("express");
 const app = express();
-// const mysql = require('mysql');
 const incomeRoute = require("./routes/income");
 const outcomemeRoute = require("./routes/outcome");
 const userRoute = require("./routes/user");
 const path = require('path');
-
-PORT = 8080;
+require("dotenv").config();
 app.use(express.json());
 let publicdir = path.join(__dirname, '', 'public');
 app.use(express.static(publicdir));
