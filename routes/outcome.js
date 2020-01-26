@@ -1,9 +1,13 @@
 const router = require("express").Router();
+const Outcome = require("../models/outcome");
 
 router.post("/", (req, res) => {
+
     try {
-        const body = req.body;
-        res.send("POST route works")
+        Outcome.create(req.body)
+            .then(outcome => res.status(201).send(outcome))
+            .catch(err => res.send("problem"))
+
     } catch (error) {
         console.log("*Error:* ", error);
     }
@@ -11,19 +15,22 @@ router.post("/", (req, res) => {
 
 router.get("/", (req, res) => {
     try {
-        res.send("Get route works")
+        Outcome.find()
+            .then(outcomes => { res.send(outcomes) })
+            .catch(err => console.log("Error:* ", err));
     } catch (error) {
-
+        console.log("Error:** ", error);
     }
 });
 
-router.patch("/:", (req, res) => {
+router.patch("/:id", (req, res) => {
     try {
         const body = req.body;
         const recordId = req.params.id;
         res.send("patch route works");
     } catch (error) {
-
+        console.log("Error:**  ", error);
+        res.send("Problem with the request");
     }
 });
 

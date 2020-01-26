@@ -4,11 +4,19 @@ export const BudgetContext = createContext();
 
 const BudgetReducer = (state, action) => {
     switch (action.type) {
-        case "GET_BUDGET":
-            state = action.payload
+        case "GET_INCOME":
+            state = { ...state, income: action.payload }
             return state
-        case "ADD_BUDGET":
-            state = "sdfhkl;dfkl"
+        case "ADD_INCOME":
+            console.log(state.income)
+            state = { ...state, income: action.payload }
+            console.log(state.income)
+            return state
+        case "GET_OUTCOME":
+            state = { ...state, outcome: action.payload }
+            return state
+        case "ADD_OUTCOME":
+            state = { ...state, outcome: action.payload }
             return state
         case "UPDATE_BUDGET":
             return "Updated"
@@ -18,18 +26,30 @@ const BudgetReducer = (state, action) => {
 }
 
 const BudgetContextProvider = props => {
-    const [budget, dispatch] = useReducer(BudgetReducer, []);
+    const initialState = {
+        income: [],
+        outcome: []
+    }
+
+    const [budgetState, dispatch] = useReducer(BudgetReducer, initialState);
 
     useEffect(() => {
+        //Get The Income
         axios.get("/income")
             .then(res => {
-                // dispatch({ type: "GET_BUDGET", payload: res.data })
+                dispatch({ type: "GET_INCOME", payload: res.data })
             })
-            .catch(err => console.log("Error:** ", err))
+            .catch(err => console.log("Error:** ", err));
+        //Get The Outcome
+        axios.get("/outcome")
+            .then(res => {
+                dispatch({ type: "GET_OUTCOME", payload: res.data })
+            })
+            .catch(err => console.log("Error:** ", err));
     }, []);
 
     return (
-        <BudgetContext.Provider value={{ budget, dispatch }}>
+        <BudgetContext.Provider value={{ budgetState, dispatch }}>
             {props.children}
         </BudgetContext.Provider>
     )
