@@ -7,4 +7,5 @@ const userScheme = new mongoose.Schema({
     isAuth: { type: Boolean, default: false },
 });
 
+
 module.exports.User = mongoose.model("User", userScheme);
