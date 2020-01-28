@@ -34,12 +34,16 @@ router.patch("/:id", (req, res) => {
     }
 });
 
-router.delete("/", (req, res) => {
+router.delete("/:id", (req, res) => {
     try {
-        const recordId = req.params.id;
-        res.send("DELETE route works");
+        Income.findByIdAndDelete(req.params.id, (err, doc) => {
+            if (err) { console.log("Error:** ", err) }
+            doc ? res.status(202).send(doc._id)
+                : res.send("not found");
+
+        });
     } catch (error) {
-        console.log("*Error:* ", error)
+        console.log("*Error:* ", error);
     }
 });
 

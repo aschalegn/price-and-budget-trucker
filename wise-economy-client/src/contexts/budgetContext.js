@@ -1,29 +1,7 @@
 import React, { createContext, useEffect, useReducer } from 'react'
 import axios from 'axios';
+import {BudgetReducer} from '../actions/BudgetsAction';
 export const BudgetContext = createContext();
-
-const BudgetReducer = (state, action) => {
-    switch (action.type) {
-        case "GET_INCOME":
-            state = { ...state, income: action.payload }
-            return state
-        case "ADD_INCOME":
-            console.log(state.income)
-            state = { ...state, income: action.payload }
-            console.log(state.income)
-            return state
-        case "GET_OUTCOME":
-            state = { ...state, outcome: action.payload }
-            return state
-        case "ADD_OUTCOME":
-            state = { ...state, outcome: action.payload }
-            return state
-        case "UPDATE_BUDGET":
-            return "Updated"
-        default:
-            return "state";
-    }
-}
 
 const BudgetContextProvider = props => {
     const initialState = {

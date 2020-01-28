@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #fff8dc67;
+}
+.ListIncomeOutcome{
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+
+.ListIncomeOutcome section{
+    width: 95%;
+    margin-top: 2vw;
+    
+}
+
+.ListIncomeOutcome section .title{
+    text-align: center;
+    margin-bottom: 1vw;
+    font-size: 25px;
+}
+
+.ListIncomeOutcome section .item_container{
+    display: flex;
+    width: 90%;
+    margin: auto;
+    border-bottom: 1px rgb(148, 144, 144) solid;
+    }
+
+.ListIncomeOutcome section .item_container h2{
+    color: red;
+    margin-left: auto;
+}
+
+.ListIncomeOutcome section .item_container:nth-child(even){
+    background-color: rgb(228, 227, 227);
+}
+
+@media only screen and (max-width:768px){
+    .ListIncomeOutcome{
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width:380px){
+    .ListIncomeOutcome{
+        width: 95%;
+    }
+}
