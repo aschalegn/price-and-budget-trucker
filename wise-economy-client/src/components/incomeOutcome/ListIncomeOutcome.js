@@ -20,6 +20,7 @@ const ListIncomeOutcome = props => {
                 {budgetState.income.map(income =>
                     <div key={income._id} className="item_container">
                         <h3>{income.description}</h3>
+                        <h3>{income.amount}</h3>
                         <h2 onClick={() => deleteItem("INCOME", income._id)} >&#10007;</h2>
                     </div>
                 )}
@@ -29,6 +30,7 @@ const ListIncomeOutcome = props => {
                 {budgetState.outcome.map(outcome =>
                     <div key={outcome._id} className="item_container">
                         <h3>{outcome.description}</h3>
+                        <h3>{outcome.amount}</h3>
                         <h2 onClick={() => deleteItem("OUTCOME", outcome._id)} >&#10007;</h2>
                     </div>
                 )}

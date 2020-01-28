@@ -8,8 +8,8 @@ const trackerRoute = require("./routes/tracker");
 const path = require('path');
 require("dotenv").config();
 app.use(express.json());
-// let publicdir = path.join(__dirname, '', 'public');
-// app.use(express.static(publicdir));
+let publicdir = path.join(__dirname, '', 'public');
+app.use(express.static(publicdir));
 
 //routes/middelewares
 app.use("/income", incomeRoute);
