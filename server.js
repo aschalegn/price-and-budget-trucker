@@ -23,7 +23,7 @@ app.get('/history', (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  // res.sendFile(path.join(__dirname , "public/404.html"));
+  res.status(404).send("unknown routing");
 });
 
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })

@@ -5,6 +5,32 @@
 
 .AddbudgetAct form {
     background-color: #cecece;
-    text-align: center;
+    min-height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.AddbudgetAct form input, .AddbudgetAct form select {
+    height: 30px;
+    min-width: 60px;
+    margin-left: 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.AddbudgetAct form i {
+    margin-left: 15px;
+    font-size: 20px;
+    color: green
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.AddbudgetAct input[type=number] {
+    -moz-appearance: textfield;
+}

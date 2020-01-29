@@ -27,19 +27,18 @@ const AddbudgetAct = () => {
                 <select name="type" id="type" onChange={changeHandler}>
                     <option value="INCOME" defaultValue>+</option>
                     <option value="OUTCOME">-</option>
-                </select><br />
-                <input type="text" id="description" name='description' placeholder="Add Description" onChange={changeHandler} autoComplete="on" required /> <br/>
-                <input type="number" id="amount" name='amount' autoComplete="off" onChange={changeHandler} placeholder="Value" required /><br/>
+                </select>
+                <input type="text" id="description" name='description' placeholder="Add Description" onChange={changeHandler} autoComplete="on" required /> 
+                <input type="number" id="amount" name='amount' autoComplete="off" onChange={changeHandler} placeholder="Value" required />
                 <select name="category" id="category" onChange={changeHandler}>
-                    <option value="general" selected>General</option>
+                    <option value="general" defaultValue>General</option>
                     <option value="entaertaiment">Entertaiment</option>
                     <option value="food">Food</option>
                     <option value="clothing">Clothing</option>
                     <option value="transportation">Transportation</option>
                     <option value="education">Education</option>
-                </select><br/>
-                <input type="text" id="amount" name='amount' autoComplete="on" onChange={changeHandler} placeholder="Value" required /> <br/>
-                <i className="far fa-check-circle" onClick={addtoBudget}></i><br/>
+                </select>
+                <i className="far fa-check-circle" onClick={addtoBudget}></i>
             </form>
         </section>
     );

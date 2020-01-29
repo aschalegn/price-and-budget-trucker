@@ -30,7 +30,7 @@ const BudgetContextProvider = props => {
         <BudgetContext.Provider value={{ budgetState, dispatch }}>
             {props.children}
         </BudgetContext.Provider>
-    )
+    );
 }
 
 export default BudgetContextProvider

@@ -5,6 +5,12 @@ const userScheme = new mongoose.Schema({
     email: { required: true, type: String },
     password: { required: true, type: String },
     isAuth: { type: Boolean, default: false },
+    trakers: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Tracker'
+        }
+    ]
 });
 
 

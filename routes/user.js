@@ -1,26 +1,14 @@
 const router = require("express").Router();
+const controller = require("../controllers/user");
 
-router.post("/", (req, res) => {
-    try {
-
-    } catch (error) {
-
-    }
-});
-router.post("/:id", (req, res) => {
-    try {
-
-    } catch (error) {
-
-    }
-});
 router.post("/signin", (req, res) => {
     try {
-
+        controller.createUser(req, res);
     } catch (error) {
 
     }
 });
+
 router.post("/login", (req, res) => {
     try {
 
@@ -28,6 +16,15 @@ router.post("/login", (req, res) => {
 
     }
 });
+
+router.post("/login", (req, res) => {
+    try {
+
+    } catch (error) {
+
+    }
+});
+
 router.patch("/:id", (req, res) => {
     try {
 
@@ -35,6 +32,8 @@ router.patch("/:id", (req, res) => {
 
     }
 });
+
+
 router.delete("/:id", (req, res) => {
     try {
 
