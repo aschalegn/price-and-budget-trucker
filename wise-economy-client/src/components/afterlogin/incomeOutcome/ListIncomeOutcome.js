@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { BudgetContext } from "../../contexts/budgetContext";
+import { BudgetContext } from "../../../contexts/budgetContext";
 import axios from 'axios';
-import '../css/ListIncomeOutcome.css'
+import '../../css/ListIncomeOutcome.css'
 const ListIncomeOutcome = props => {
     const { budgetState, dispatch } = useContext(BudgetContext);
     const deleteItem = (type, id) => {

@@ -1,17 +1,17 @@
 import React from 'react';
 import BudgetContextProvider from "./contexts/budgetContext"
 import NavBar from './components/NavBar';
-import IsLogenInContextProvider from './contexts/IsLogenInContext';
+import IsLogedInContextProvider from './contexts/isLogedInContext';
 function App() {
-  return (
-    <section className="App">
-      <BudgetContextProvider>
-        <IsLogenInContextProvider>
-          <NavBar />
-        </IsLogenInContextProvider>
-      </BudgetContextProvider>
-    </section>
-  );
+    return (
+        <section className="App">
+            <BudgetContextProvider>
+                <IsLogedInContextProvider>
+                    <NavBar />
+                </IsLogedInContextProvider>
+            </BudgetContextProvider>
+        </section>
+    );
 }
 
 export default App;

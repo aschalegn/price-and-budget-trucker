@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { BudgetContext } from "../../contexts/budgetContext";
+import { BudgetContext } from "../../../contexts/budgetContext";
 import axios from 'axios';
-import "../css/AddbudgetAct.css";
+import "../../css/AddbudgetAct.css";
 const AddbudgetAct = () => {
     const { dispatch } = useContext(BudgetContext);
     const [formvalue, setformvalue] = useState({ type: "INCOME", category: "general" });

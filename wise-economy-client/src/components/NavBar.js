@@ -1,16 +1,17 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, Fragment } from 'react';
 import "./css/NavBar.css";
-import { Link, BrowserRouter, Switch, Route} from 'react-router-dom';
-import Home from "./Home";
+import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
+import HomeAfterLogIn from "./afterlogin/HomeAfterLogIn";
+import HomeBeforLogin from "./beforelogin/HomeBeforLogin";
 import About from './About';
-import Tracker from './Tracker';
+import Tracker from './afterlogin/Tracker';
 import Page404 from './Page404';
-import { IsLogenInContext } from '../contexts/IsLogenInContext';
+import { isLogedInContext } from '../contexts/isLogedInContext';
 
 const NavBar = props => {
     const [smallScreen, setsmallScreen] = useState(false);
-    const {isLogedIn} = useContext(IsLogenInContext);
-    console.log(isLogedIn)
+    const { userStatus } = useContext(isLogedInContext);
+    console.log(userStatus)
     return (
         <BrowserRouter>
             <nav className="NavBar">
@@ -21,19 +22,36 @@ const NavBar = props => {
                     <div className="navPoint"></div>
                 </section>
 
-                {!smallScreen ?
-                    <ul>
-                        <li> <Link to="/">Home</Link> </li>
-                        <li> <Link to="/about">About</Link> </li>
-                        <li> <Link to="/tracker">Track Price</Link> </li>
-                    </ul>
-                    : ''}
+                <ul>
+                    {userStatus.isLogegedIn ?
+                        <Fragment>
+                            <li> <Link to="/">Home</Link> </li>
+                            <li> <Link to="/about">About</Link> </li>
+                            <li> <Link to="/tracker">Track Price</Link> </li>
+                        </Fragment>
+                        :
+                        <Fragment>
+                            <li> <Link to="/">Home</Link> </li>
+                            <li> <Link to="/about">About</Link> </li>
+                        </Fragment>
+                    }
+                </ul>
 
             </nav>
             <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/about" component={About} />
-                <Route exact path="/tracker" component={Tracker} />
+                {userStatus.isLogegedIn ?
+                    <Fragment>
+                        <Route exact path="/" component={HomeAfterLogIn} />
+                        <Route exact path="/about" component={About} />
+                        <Route exact path="/tracker" component={Tracker} />
+
+                    </Fragment>
+                    :
+                    <Fragment>
+                        <Route exact path="/" component={HomeBeforLogin} />
+                        <Route exact path="/about" component={About} />
+                    </Fragment>
+                }
                 <Route exact path="/*" component={Page404} />
             </Switch>
         </BrowserRouter>

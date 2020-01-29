@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "./css/Tracker.css"
+import "../css/Tracker.css"
 import axios from 'axios';
 export default function Tracker() {
     const [formdata, setformdata] = useState();

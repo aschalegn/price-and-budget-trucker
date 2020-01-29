@@ -1,6 +1,6 @@
 import React, { useContext} from 'react'
-import "./css/HeaderAfterLog.css";
-import { BudgetContext } from '../contexts/budgetContext';
+import "../css/HeaderAfterLog.css";
+import { BudgetContext } from '../../contexts/budgetContext';
 
 export default function HeaderAfterLog() {
     const { budgetState } = useContext(BudgetContext);
