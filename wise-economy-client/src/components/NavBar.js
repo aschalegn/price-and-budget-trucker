@@ -7,11 +7,13 @@ import About from './About';
 import Tracker from './afterlogin/Tracker';
 import Page404 from './Page404';
 import { isLogedInContext } from '../contexts/isLogedInContext';
+import Login from './beforelogin/Login';
+import Signin from './beforelogin/Signin';
 
 const NavBar = props => {
     const [smallScreen, setsmallScreen] = useState(false);
     const { userStatus } = useContext(isLogedInContext);
-    console.log(userStatus)
+
     return (
         <BrowserRouter>
             <nav className="NavBar">
@@ -33,10 +35,11 @@ const NavBar = props => {
                         <Fragment>
                             <li> <Link to="/">Home</Link> </li>
                             <li> <Link to="/about">About</Link> </li>
+                            <li> <Link to="/login">Login</Link> </li>
+                            <li> <Link to="/signin">Signin</Link> </li>
                         </Fragment>
                     }
                 </ul>
-
             </nav>
             <Switch>
                 {userStatus.isLogegedIn ?
@@ -50,6 +53,8 @@ const NavBar = props => {
                     <Fragment>
                         <Route exact path="/" component={HomeBeforLogin} />
                         <Route exact path="/about" component={About} />
+                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/signin" component={Signin} />
                     </Fragment>
                 }
                 <Route exact path="/*" component={Page404} />

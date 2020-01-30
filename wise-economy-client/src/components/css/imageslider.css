@@ -1,0 +1,10 @@
+    .HeaderBeforeLogin .carousale_item, .HeaderBeforeLogin .carousale_item img {
+        height: 55vh;
+    }
+
+
+@media only screen and (max-width: 1000px) {
+    .HeaderBeforeLogin .carousale_item, .HeaderBeforeLogin .carousale_item img {
+        height: 40vh;
+    }
+}
