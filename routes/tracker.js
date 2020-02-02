@@ -7,17 +7,21 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    // let newTracker = new Tracker(req.body)
-    // newTracker.user = req.body._id;
-    // newTracker.sav()
-    Tracker.create(req.body).then(tracker => {
-        console.log(tracker);
-        
-        tracker.user = req.body._id;
-        tracker.save();
-        // trackerPlatform.getPlatform(tracker);
-        res.send(tracker);
+    trackerPlatform.getPlatform(tracker);
+    let newTracker = new Tracker({
+        title: req.body.title,
+        url: req.body.url,
+        currentPrice: req.body.currentPrice,
+        desiredPrice: req.body.desiredPrice,
+        user: req.body._id,
     })
+    newTracker.save();
+    if (newTracker) {
+        res.send(newTracker)
+    } else {
+        res.send("not added")
+    }
+
 
 
 });
