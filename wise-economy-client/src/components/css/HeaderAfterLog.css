@@ -4,7 +4,7 @@
 }
 
 .HeaderAfterLog {
-    height: 30vh;
+    min-height: 35vh;
     width: 100%;
     background-image: url("../../images/mountain-landscape-2031539__340.webp");
     background-size: cover;

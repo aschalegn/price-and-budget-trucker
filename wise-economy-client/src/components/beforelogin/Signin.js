@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react'
 import Axios from 'axios';
 import { isLogedInContext } from '../../contexts/isLogedInContext';
+import "../css/SigninLogin.css";
+import { Button } from 'react-bootstrap';
 
 export default function Signin() {
     const [formData, setFormData] = useState();
@@ -19,26 +21,31 @@ export default function Signin() {
                 }
             });
     }
-    
+
     return (
-        <form className="Signin" onSubmit={signUser}>
-            <div className="group">
-                <label htmlFor="title">Full Name</label>
-                <input type="text" id="title" name="title" onChange={changeHandler} required />
-            </div>
-            <div className="group">
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" onChange={changeHandler} required />
-            </div>
-            <div className="group">
-                <label htmlFor="password">password</label>
-                <input type="password" id="password" name="password" onChange={changeHandler} required autoComplete="off" />
-            </div>
-            <div className="group">
-                <label htmlFor="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" onChange={changeHandler} required autoComplete="off" />
-            </div>
-            <input type="submit" value="Sign IN" />
-        </form>
+        <section className="Signin">
+            <p>.</p>
+            <form onSubmit={signUser}>
+                <h3 className="text-center">Sigin</h3>
+                <div className="group">
+                    <label htmlFor="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Full Name" onChange={changeHandler} required />
+                </div>
+                <div className="group">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="email" onChange={changeHandler} required />
+                </div>
+                <div className="group">
+                    <label htmlFor="password">password</label>
+                    <input type="password" id="password" name="password" placeholder="password" onChange={changeHandler} required autoComplete="off" />
+                </div>
+                <div className="group">
+                    <label htmlFor="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" onChange={changeHandler} required autoComplete="off" />
+                </div>
+                <Button type="submit" className="center-block">Sign IN </Button>
+            </form>
+        </section>
+
     )
 }

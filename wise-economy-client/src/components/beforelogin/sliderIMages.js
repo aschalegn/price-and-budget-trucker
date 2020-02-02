@@ -6,9 +6,9 @@ import early_retirement from "../../images/early-retirement.png"
 
 
 export const images = [
-    { src: eduction, text: "this is the text" },
-    { src: vication, text: "this is the text" },
-    { src: retirement, text: "this is the text" },
-    { src: childrenEduction, text: "this is the text" },
-    { src: early_retirement, text: "this is the text" },
+    { src: eduction, text: "Educate Yourself" },
+    { src: vication, text: "Explore The Word" },
+    { src: retirement, text: "Enjoy Your Retirement" },
+    { src: childrenEduction, text: "Invest In The Next Generation" },
+    { src: early_retirement, text: "Retire Early" },
 ]

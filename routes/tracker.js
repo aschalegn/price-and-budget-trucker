@@ -14,6 +14,10 @@ router.patch("/:id", (req, res) => {
 
 })
 
+router.patch("/:id/buy", (req, res) => {
+
+})
+
 router.delete("/:id", (req, res) => {
 
 })

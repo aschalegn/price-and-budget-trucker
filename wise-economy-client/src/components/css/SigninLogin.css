@@ -1,0 +1,80 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.Signin, .Login {
+    width: 100vw;
+    height: 93vh;
+    background-image: url(../../images/formBackground.jpg);
+    background-size: cover;
+    position: relative;
+    z-index: 5;
+}
+
+.Signin::before, .Login::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: black;
+    opacity: 0.2;
+    z-index: -10;
+}
+
+.Signin form, .Login form {
+    width: 50%;
+    margin: 10vh auto;
+    min-height: 60vh;
+    border: 3px solid #e4563d;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+}
+
+.Login form {
+    min-height: 45vh;
+}
+
+.Signin form button, .Login form button {
+    width: 200px;
+    margin: 20px auto;
+}
+
+.Signin form .group, .Login form .group {
+    display: flex;
+    width: 90%;
+    margin: 1vh auto;
+    align-items: center;
+}
+
+.Signin form .group input, .Login form .group input {
+    width: 50%;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.Signin form .group label, .Login form .group label {
+    width: 30%
+}
+
+@media only screen and (max-width: 450px) {
+    .Signin form, .Login form {
+        width: 95%;
+        text-align: center;
+    }
+    .Signin form .group, .Login form .group {
+        flex-direction: column;
+        align-items: center;
+    }
+    .Signin form .group input, .Login form .group input, .Login form .group label, .Signin form .group label {
+        width: 80%;
+    }
+}
