@@ -14,15 +14,17 @@ const userReducer = (state, action) => {
 
 const IsLogedInContextProvider = props => {
     const initialstate = {
-        isLogegedIn: true,
+        isLogegedIn: false,
         user: {}
     }
 
     const [userStatus, dispatch] = useReducer(userReducer, initialstate);
-
-    // useEffect(() =>
-    //     document.cookie ? dispatch({ type: "LOGIN_USER", paylod: JSON.parse(localStorage.user) }) : ''
-    //     , []);
+    useEffect(() => {
+        if (document.cookie && localStorage.wiseUser) {
+            dispatch({ type: "LOGIN_USER", paylod: JSON.parse(localStorage.wiseUser) })
+        }
+    }, []);
+    
     return (
         <isLogedInContext.Provider value={{ userStatus, dispatch }}>
             {props.children}

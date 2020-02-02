@@ -1,12 +1,17 @@
 const mongoose = require("mongoose");
 
 const trackerScheme = new mongoose.Schema({
-    title: { type: String, required: true },
-    url: { type: String, required: true },
-    currentPrice: { type: Number, required: true },
-    desiredPrice: { type: Number, required: true },
-    isbuyed: { type: Boolean, default: false }
+    title: { type: String},
+    url: { type: String},
+    currentPrice: { type: Number},
+    desiredPrice: { type: Number},
+    isbuyed: { type: Boolean, default: false },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    platform: String
 });
 
-Tracker = mongoose.model("Tracker", trackerScheme);
+let Tracker = mongoose.model("Tracker", trackerScheme);
 module.exports = Tracker;

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "../css/Tracker.css"
 import axios from 'axios';
 export default function Tracker() {
-    const [formdata, setformdata] = useState();
+    const [formdata, setformdata] = useState(JSON.parse(localStorage.wiseUser));
     const changeHandler = (e) => {
         setformdata({ ...formdata, [e.target.name]: e.target.value });
     }

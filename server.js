@@ -17,11 +17,6 @@ app.use("/outcome", outcomeRoute);
 app.use("/tracker", trackerRoute);
 app.use("/user", userRoute);
 
-//! Get Logs Data
-app.get('/history', (req, res) => {
-  // actionModule.getServerLogs(res);
-});
-
 app.get("*", (req, res) => {
   res.status(404).send("unknown routing");
 });

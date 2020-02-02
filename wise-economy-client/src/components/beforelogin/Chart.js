@@ -6,15 +6,15 @@ const Chart = props => {
     const height = window.innerHeight
     const ptest = useRef(null);
     const chardiv = useRef(null)
-    useEffect(() => {
-        if (ptest.current) {
-            d3.select(chardiv.current)
-                .append("svg")
-                .attr("width", width * 0.3)
-                .attr("height", height * 0.3)
+    // useEffect(() => {
+    //     if (ptest.current) {
+    //         d3.select(chardiv.current)
+    //             .append("svg")
+    //             .attr("width", width * 0.3)
+    //             .attr("height", height * 0.3)
                 
-        }
-    }, [])
+    //     }
+    // }, [])
 
     return (
         <div>

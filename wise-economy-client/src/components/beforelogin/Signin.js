@@ -28,8 +28,8 @@ export default function Signin() {
             <form onSubmit={signUser}>
                 <h3 className="text-center">Sigin</h3>
                 <div className="group">
-                    <label htmlFor="fullname">Full Name</label>
-                    <input type="text" id="fullname" name="fullname" placeholder="Full Name" onChange={changeHandler} required />
+                    <label htmlFor="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Full Name" onChange={changeHandler} required />
                 </div>
                 <div className="group">
                     <label htmlFor="email">Email</label>

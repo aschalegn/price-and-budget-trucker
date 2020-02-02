@@ -9,34 +9,35 @@ const tokenSecret = "@@wise**Aschaley/*economy";
 
 module.exports.createUser = (req, res) => {
     //add the user to the db
-    console.log(req.body);
-    newUser = new User(req.body);
     try {
-        bcrypt.genSalt(10, (err, salt) => {
-            if (err) console.log(err);
-            else {
-                bcrypt.hash(newUser.password, salt, (err, hash) => {
-                    if (err) { console.log(err) }
+        User.create(req.body)
+            .then(user => {
+                bcrypt.genSalt(10, (err, salt) => {
+                    if (err) console.log(err);
                     else {
-                        newUser.password = hash;
-                        newUser.save();
-                        res.status(201).send(newUser);
+                        bcrypt.hash(user.password, salt, (err, hash) => {
+                            if (err) { console.log(err) }
+                            else {
+                                user.password = hash;
+                                user.save();
+                                res.status(201).send(user);
+                            }
+                        });
                     }
                 });
-            }
-        });
+            })
+
     } catch (error) {
         console.log(error);
     }
-
     //send E-mail to validate user
 
 }
 
 module.exports.logInUser = (req, res) => {
-    User.findOne({ email: req.body.email }).select("_id fullname trackers")
+    User.findOne({ email: req.body.email }).select("_id password fullName trackers")
         .exec((err, user) => {
-            bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
+            bcrypt.compare(req.body.password, user.password, function (err, isMatch) {
                 if (err) {
                     console.log(err);
                     res.status(500).send("there an error");
@@ -51,12 +52,13 @@ module.exports.logInUser = (req, res) => {
                         }
                         res.cookie("wiseeconomy", token, { maxAge: 1254545454 });
                         User.findById(user._id).populate("trackers").exec((err, user) => {
+
                             if (err) {
                                 console.log("Error:***", err);
                                 return
                             }
                             else {
-                                res.status(200).json(user);
+                                res.status(200).send(user);
                             }
                         });
                     });
@@ -67,7 +69,7 @@ module.exports.logInUser = (req, res) => {
 
 module.exports.isLogedIn = (req) => {
     const token = req.cookies.wiseeconomi;
-    let payload
+    let payload;
     if (!token) { return false }
     try {
         payload = jwt.verify(token, tokenSecret);

@@ -11,9 +11,9 @@ router.post("/signin", (req, res) => {
 
 router.post("/login", (req, res) => {
     try {
-
+        controller.logInUser(req, res);
     } catch (error) {
-
+        res.status(404).send("there is a problem")
     }
 });
 
