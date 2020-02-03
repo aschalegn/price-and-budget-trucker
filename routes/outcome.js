@@ -1,12 +1,23 @@
 const router = require("express").Router();
 const Outcome = require("../models/outcome");
+const User = require("../models/user")
 
 router.post("/", (req, res) => {
-
     try {
-        Outcome.create(req.body)
-            .then(outcome => res.status(201).send(outcome))
+        User.findById(req.body._id, (err, user) => {
+            if (err) {
+                console.log("Error", err);
+                res.send("there is an error")
+                return
+            }
+            Outcome.create(req.body)
+            .then(outcome => {
+                User.outcomes.push(outcome);
+                User.save();
+                res.status(201).send(outcome)
+            })
             .catch(err => res.send("problem"))
+        })
 
     } catch (error) {
         console.log("*Error:* ", error);

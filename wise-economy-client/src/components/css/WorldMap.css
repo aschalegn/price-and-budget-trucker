@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.WorldMap .sphere{
+   fill: #3333ac;
+    margin: 0;
+    overflow: hidden;
+}
+
+.WorldMap .country{
+    fill: lightgreen;
+    stroke: black;
+    stroke-opacity: 0.2;
+}
+
+.WorldMap .country:hover{
+    fill: darkgoldenrod;
+}

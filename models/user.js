@@ -5,7 +5,20 @@ const userScheme = new mongoose.Schema({
     email: { required: true, type: String },
     password: { required: true, type: String },
     isAuth: { type: Boolean, default: false },
-    trakers: [
+    incomes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Income"
+        }
+    ],
+
+    outcomes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Outcome"
+        }
+    ],
+    trackers: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Tracker'

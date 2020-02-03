@@ -30,6 +30,11 @@ const NavBar = props => {
                             <li> <Link to="/">Home</Link> </li>
                             <li> <Link to="/about">About</Link> </li>
                             <li> <Link to="/tracker">Track Price</Link> </li>
+                            <li onClick={() => {
+                                localStorage.clear();
+                                document.cookie = ''
+                            }}>
+                                <Link to="/">Log Out</Link> </li>
                         </Fragment>
                         :
                         <Fragment>
