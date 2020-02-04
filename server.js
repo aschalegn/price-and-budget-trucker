@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+const cookieParser = require("cookie-parser");
 const incomeRoute = require("./routes/income");
 const outcomeRoute = require("./routes/outcome");
 const userRoute = require("./routes/user");
@@ -12,6 +13,7 @@ let publicdir = path.join(__dirname, '', 'public');
 app.use(express.static(publicdir));
 
 //routes/middelewares
+app.use(cookieParser());
 app.use("/income", incomeRoute);
 app.use("/outcome", outcomeRoute);
 app.use("/tracker", trackerRoute);

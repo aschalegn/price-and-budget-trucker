@@ -1,6 +1,5 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
-const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
 
 //!Add e-mail functionality
@@ -68,7 +67,7 @@ module.exports.logInUser = (req, res) => {
 }
 
 module.exports.isLogedIn = (req) => {
-    const token = req.cookies.wiseeconomi;
+    const token = req.cookies.wiseeconomy;
     let payload;
     if (!token) { return false }
     try {

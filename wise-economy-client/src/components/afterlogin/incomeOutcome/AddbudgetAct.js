@@ -4,7 +4,7 @@ import axios from 'axios';
 import "../../css/AddbudgetAct.css";
 const AddbudgetAct = () => {
     const { dispatch } = useContext(BudgetContext);
-    const [formvalue, setformvalue] = useState({ type: "INCOME", category: "general", _id: JSON.parse(localStorage.wiseUser) });
+    const [formvalue, setformvalue] = useState({ type: "INCOME", category: "general", _id: (JSON.parse(localStorage.wiseUser))._id });
 
     const changeHandler = (e) => {
         setformvalue({ ...formvalue, [e.target.name]: e.target.value });

@@ -1,8 +1,12 @@
 const router = require("express").Router();
 const Outcome = require("../models/outcome");
-const User = require("../models/user")
+const User = require("../models/user");
+const auth = require("../controllers/user")
 
 router.post("/", (req, res) => {
+    if (!auth.isLogedIn(req)) {
+        res.status(401).send("unautorized");
+    }
     try {
         User.findById(req.body._id, (err, user) => {
             if (err) {
@@ -10,16 +14,22 @@ router.post("/", (req, res) => {
                 res.send("there is an error")
                 return
             }
-            Outcome.create(req.body)
-            .then(outcome => {
-                User.outcomes.push(outcome);
-                User.save();
-                res.status(201).send(outcome)
-            })
-            .catch(err => res.send("problem"))
-        })
-
-    } catch (error) {
+            let newOutcome = new Outcome({
+                description: req.body.description,
+                amount: req.body.amount,
+                category: req.body.category
+            });
+            newOutcome.save();
+            if (newOutcome) {
+                user.outcomes.push(newOutcome);
+                user.save();
+                res.status(201).send(newOutcome);
+                return
+            }
+            res.send("problem");
+        });
+    }
+    catch (error) {
         console.log("*Error:* ", error);
     }
 });

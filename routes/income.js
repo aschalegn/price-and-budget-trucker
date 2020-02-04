@@ -1,18 +1,37 @@
 const router = require("express").Router();
 const Income = require("../models/income");
+const User = require("../models/user");
+const auth = require("../controllers/user")
 
 router.post("/", (req, res) => {
-
+    if (!auth.isLogedIn(req)) {
+        res.status(401).send("unautorized");
+    }
     try {
-        Income.create(req.body)
-            .then(income => res.status(201).send(income))
-            .catch(err => res.send("problem"))
-
-    } catch (error) {
+        User.findById(req.body._id, (err, user) => {
+            if (err) {
+                console.log("Error", err);
+                res.send("there is an error")
+                return
+            }
+            let newIncome = new Income({
+                description: req.body.description,
+                amount: req.body.amount,
+            });
+            newIncome.save();
+            if (newIncome) {
+                user.incomes.push(newIncome);
+                user.save();
+                res.status(201).send(newIncome);
+                return
+            }
+            res.status(404).send("problem");
+        });
+    }
+    catch (error) {
         console.log("*Error:* ", error);
     }
 });
-
 router.get("/", (req, res) => {
     try {
         Income.find()
