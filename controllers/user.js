@@ -3,40 +3,46 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 //!Add e-mail functionality
-
 const tokenSecret = "@@wise**Aschaley/*economy";
 
-module.exports.createUser = (req, res) => {
+module.exports.createUser = async (req, res) => {
     //add the user to the db
     try {
-        User.create(req.body)
-            .then(user => {
-                bcrypt.genSalt(10, (err, salt) => {
-                    if (err) console.log(err);
-                    else {
-                        bcrypt.hash(user.password, salt, (err, hash) => {
-                            if (err) { console.log(err) }
-                            else {
-                                user.password = hash;
-                                user.save();
-                                res.status(201).send(user);
-                            }
-                        });
-                    }
+        const user = await User.find({ email: req.body.email });
+        if (user.length === 0) {
+            User.create(req.body)
+                .then(user => {
+                    bcrypt.genSalt(10, (err, salt) => {
+                        if (err) console.log(err);
+                        else {
+                            bcrypt.hash(user.password, salt, (err, hash) => {
+                                if (err) { console.log(err) }
+                                else {
+                                    user.password = hash;
+                                    user.save();
+                                    res.status(201).send(user);
+                                }
+                            });
+                        }
+                    });
                 });
-            })
+        }
+        else {
+            console.log("User Already Exist");
+            res.status(303).send("user Already exist")
+        }
 
     } catch (error) {
         console.log(error);
     }
-    //send E-mail to validate user
+    //Todo: send E-mail to validate user
 
 }
 
 module.exports.logInUser = (req, res) => {
-    User.findOne({ email: req.body.email }).select("_id password fullName trackers")
+    User.findOne({ email: req.params.email }).select("_id password fullName trackers")
         .exec((err, user) => {
-            bcrypt.compare(req.body.password, user.password, function (err, isMatch) {
+            bcrypt.compare(req.params.password, user.password, function (err, isMatch) {
                 if (err) {
                     console.log(err);
                     res.status(500).send("there an error");
@@ -50,16 +56,16 @@ module.exports.logInUser = (req, res) => {
                             return
                         }
                         res.cookie("wiseeconomy", token, { maxAge: 1254545454 });
-                        User.findById(user._id).populate("trackers").exec((err, user) => {
-
-                            if (err) {
-                                console.log("Error:***", err);
-                                return
-                            }
-                            else {
-                                res.status(200).send(user);
-                            }
-                        });
+                        User.findById(user._id).populate("trackers").populate("incomes").populate("outcomes")
+                            .exec((err, user) => {
+                                if (err) {
+                                    console.log("Error:***", err);
+                                    return
+                                }
+                                user ?
+                                    res.status(200).send(user)
+                                    : res.send("User Not Found");
+                            });
                     });
                 }
             });
@@ -78,10 +84,6 @@ module.exports.isLogedIn = (req) => {
     } catch (error) {
         console.log("Erro", error);
     }
-}
-
-module.exports.logOutUser = (req, res) => {
-
 }
 
 module.exports.deleteUser = (req, res) => {

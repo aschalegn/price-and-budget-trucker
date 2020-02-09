@@ -12,7 +12,7 @@ app.use(express.json());
 let publicdir = path.join(__dirname, '', 'public');
 app.use(express.static(publicdir));
 
-//routes/middelewares
+//routes
 app.use(cookieParser());
 app.use("/income", incomeRoute);
 app.use("/outcome", outcomeRoute);

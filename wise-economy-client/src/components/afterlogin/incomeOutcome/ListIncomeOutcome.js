@@ -17,7 +17,7 @@ const ListIncomeOutcome = props => {
         <section className="ListIncomeOutcome">
             <section>
                 <h1 className="title">Income</h1>
-                {budgetState.income.map(income =>
+                {budgetState.incomes.map(income =>
                     <div key={income._id} className="item_container">
                         <h3>{income.description}</h3>
                         <h3 style={{marginLeft:'30%'}}>{income.amount}</h3>
@@ -27,7 +27,7 @@ const ListIncomeOutcome = props => {
             </section>
             <section>
                 <h1 className="title">Outcome</h1>
-                {budgetState.outcome.map(outcome =>
+                {budgetState.outcomes.map(outcome =>
                     <div key={outcome._id} className="item_container">
                         <h3>{outcome.description}</h3>
                         <h3 style={{marginLeft:'30%'}}>{outcome.amount}</h3>

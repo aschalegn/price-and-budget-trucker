@@ -9,19 +9,11 @@ router.post("/signin", (req, res) => {
     }
 });
 
-router.post("/login", (req, res) => {
+router.get("/login/:email/:password", (req, res) => {
     try {
         controller.logInUser(req, res);
     } catch (error) {
         res.status(404).send("there is a problem")
-    }
-});
-
-router.post("/login", (req, res) => {
-    try {
-
-    } catch (error) {
-
     }
 });
 

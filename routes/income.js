@@ -8,7 +8,7 @@ router.post("/", (req, res) => {
         res.status(401).send("unautorized");
     }
     try {
-        User.findById(req.body._id, (err, user) => {
+        User.findById(req.body._id, async (err, user) => {
             if (err) {
                 console.log("Error", err);
                 res.send("there is an error")
@@ -22,7 +22,7 @@ router.post("/", (req, res) => {
             if (newIncome) {
                 user.incomes.push(newIncome);
                 user.save();
-                res.status(201).send(newIncome);
+                res.status(201).send(newIncome)
                 return
             }
             res.status(404).send("problem");
@@ -59,7 +59,6 @@ router.delete("/:id", (req, res) => {
             if (err) { console.log("Error:** ", err) }
             doc ? res.status(202).send(doc._id)
                 : res.send("not found");
-
         });
     } catch (error) {
         console.log("*Error:* ", error);

@@ -46,7 +46,7 @@ const Chart = props => {
                 .attr("text-anchor", "5rem")
                 .text((d => { return d.data.label }))
 
-          
+
         }
     }
     draw();
@@ -71,8 +71,8 @@ export default function PieChart() {
         return sum
     }
 
-    const INCOM_SUM = calculateSum(budgetState.income);
-    const OUTCOME_SUM = calculateSum(budgetState.outcome);
+    const INCOM_SUM = calculateSum(budgetState.incomes);
+    const OUTCOME_SUM = calculateSum(budgetState.outcomes);
     const SUM = INCOM_SUM - OUTCOME_SUM;
     return (
         <section >

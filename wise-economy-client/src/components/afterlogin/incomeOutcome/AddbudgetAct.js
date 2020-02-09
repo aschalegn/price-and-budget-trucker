@@ -28,7 +28,7 @@ const AddbudgetAct = () => {
                     <option value="INCOME" defaultValue>+</option>
                     <option value="OUTCOME">-</option>
                 </select>
-                <input type="text" id="description" name='description' placeholder="Add Description" onChange={changeHandler} autoComplete="on" required /> 
+                <input type="text" id="description" name='description' placeholder="Add Description" onChange={changeHandler} autoComplete="on" required />
                 <input type="number" id="amount" name='amount' autoComplete="off" onChange={changeHandler} placeholder="Value" required />
                 <select name="category" id="category" onChange={changeHandler}>
                     <option value="general" defaultValue>General</option>

@@ -1,25 +1,29 @@
 export const BudgetReducer = (state, action) => {
     switch (action.type) {
         case "GET_INCOME":
-            return { ...state, income: action.payload }
+            return {
+                ...state, incomes: action.payload
+            }
         case "ADD_INCOME":
             return {
-                ...state, income: [
-                    ...state.income,
+                ...state, incomes: [
+                    ...state.incomes,
                     action.payload
                 ]
             }
         case "DELETE_INCOME":
             return {
                 ...state,
-                income: state.income.filter(item => item._id !== action.payload)
+                incomes: state.incomes.filter(item => item._id !== action.payload)
             }
         case "GET_OUTCOME":
-            return { ...state, outcome: action.payload }
+            return {
+                ...state, outcomes: action.payload
+            }
         case "ADD_OUTCOME":
             return {
-                ...state, outcome: [
-                    ...state.outcome,
+                ...state, outcomes: [
+                    ...state.outcomes,
                     action.payload
                 ]
             }
@@ -27,11 +31,16 @@ export const BudgetReducer = (state, action) => {
         case "DELETE_OUTCOME":
             return {
                 ...state,
-                outcome: state.outcome.filter(item => item._id !== action.payload)
+                outcomes: state.outcomes.filter(item => item._id !== action.payload)
             }
-
-        case "UPDATE_BUDGET":
-            return "Updated"
+        // case "GET_TRACKER":
+        //     return { ...state, outcome: action.payload.tracker }
+        // case "ADD_TRACKER":
+        //     return { ...state, outcome: action.payload.tracker }
+        // case "DELETE_TRACKER":
+        //     return { ...state, outcome: action.payload.tracker }
+        // case "UPDATE_TRACKER":
+        //     return { ...state, outcome: action.payload.tracker }
         default:
             return "state";
     }

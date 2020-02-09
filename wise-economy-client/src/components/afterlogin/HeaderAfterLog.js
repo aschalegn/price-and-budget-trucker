@@ -4,16 +4,18 @@ import { BudgetContext } from '../../contexts/budgetContext';
 
 export default function HeaderAfterLog() {
     const { budgetState } = useContext(BudgetContext);
+    console.log(budgetState.incomes);
+    
     const calculateSum = (array) => {
         let sum = 0;
-        array.forEach(element => {
-            sum += element.amount
+        array.map(element => {
+            sum += element.amount;
         });
         return sum
     }
 
-    const INCOM_SUM = calculateSum(budgetState.income);
-    const OUTCOME_SUM = calculateSum(budgetState.outcome);
+    const INCOM_SUM = calculateSum(budgetState.incomes);
+    const OUTCOME_SUM = calculateSum(budgetState.outcomes);
     const Total = INCOM_SUM - OUTCOME_SUM;
 
     let red_style = { color: "#c21010" }

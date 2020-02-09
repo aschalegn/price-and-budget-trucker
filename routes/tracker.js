@@ -25,9 +25,10 @@ router.post("/", (req, res) => {
                 url: req.body.url,
                 currentPrice: req.body.currentPrice,
                 desiredPrice: req.body.desiredPrice,
-                user: user._id,
                 platform: platform
             });
+            
+            newTracker.user = user;
             newTracker.save();
             if (newTracker) {
                 res.send(newTracker);

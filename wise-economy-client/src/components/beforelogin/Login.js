@@ -12,13 +12,9 @@ export default function Login() {
     }
 
     const loinUser = (e) => {
-        console.log("came to the request")
-        axios.post("user/login", formData)
+        axios.get(`user/login/${formData.email}/${formData.password}`)
             .then(res => {
-                console.log(res);
-
                 if (res.status === 200) {
-                    console.log(res.data)
                     localStorage.wiseUser = JSON.stringify(res.data);
                     dispatch({ type: "LOGIN_USER", payload: res.data });
                 }

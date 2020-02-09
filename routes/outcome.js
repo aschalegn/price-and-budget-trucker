@@ -8,7 +8,7 @@ router.post("/", (req, res) => {
         res.status(401).send("unautorized");
     }
     try {
-        User.findById(req.body._id, (err, user) => {
+        User.findById(req.body._id, async (err, user) => {
             if (err) {
                 console.log("Error", err);
                 res.send("there is an error")
@@ -26,7 +26,7 @@ router.post("/", (req, res) => {
                 res.status(201).send(newOutcome);
                 return
             }
-            res.send("problem");
+            else { res.send("problem"); }
         });
     }
     catch (error) {
@@ -66,7 +66,5 @@ router.delete("/:id", (req, res) => {
         console.log("*Error:* ", error);
     }
 });
-
-
 
 module.exports = router;
