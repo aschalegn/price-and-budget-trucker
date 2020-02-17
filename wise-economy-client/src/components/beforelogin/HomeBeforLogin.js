@@ -1,13 +1,13 @@
 import React from 'react'
 import HeaderBeforeLogin from './HeaderBeforeLogin'
-import Chart from './Chart'
+// import Chart from './Chart'
 import { Container, Row, Col } from 'react-bootstrap'
 
 export default function HomeBeforLogin() {
     return (
         <section>
             <HeaderBeforeLogin />
-            <Chart />
+            {/* <Chart /> */}
             <Container>
                 <h2 className="text-center" mt={2}>You Controll Your Economic Futute</h2>
                 <Row>

@@ -8,28 +8,28 @@ const BudgetContextProvider = props => {
         incomes: [],
         outcomes: []
     }
-    const [budgetState, dispatch] = useReducer(BudgetReducer, initialState);
+    const [budgetState, budgetDispatch] = useReducer(BudgetReducer, initialState);
 
     useEffect(() => {
         //Get The Income
         if (document.cookie && localStorage.wiseUser) {
             axios.get("/income").then(res => {
                 if (res.status === 200) {
-                    dispatch({ type: "GET_INCOME", payload: res.data })
+                    budgetDispatch({ type: "GET_INCOME", payload: res.data })
                 }
             });
 
             //Get The Outcome
             axios.get("/outcome").then(res => {
                 if (res.status === 200) {
-                    dispatch({ type: "GET_OUTCOME", payload: res.data })
+                    budgetDispatch({ type: "GET_OUTCOME", payload: res.data })
                 }
             });
         }
     }, []);
 
     return (
-        <BudgetContext.Provider value={{ budgetState, dispatch }}>
+        <BudgetContext.Provider value={{ budgetState, budgetDispatch }}>
             {props.children}
         </BudgetContext.Provider>
     );

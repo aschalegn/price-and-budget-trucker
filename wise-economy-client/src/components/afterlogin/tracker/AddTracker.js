@@ -1,15 +1,21 @@
-import React, { useState } from 'react'
-import "../css/Tracker.css"
+import React, { useState, useContext } from 'react'
+import { TrackContext } from '../../../contexts/trackCotext'
+import "./Tracker.css"
 import axios from 'axios';
-export default function Tracker() {
+export default function AddTracker() {
+    const { trackDispatch } = useContext(TrackContext);
     const [formdata, setformdata] = useState(JSON.parse(localStorage.wiseUser));
     const changeHandler = (e) => {
         setformdata({ ...formdata, [e.target.name]: e.target.value });
     }
+
     const formHandler = (e) => {
         e.preventDefault();
-        axios.post('tracker', formdata)
+        axios.post('/tracker', formdata)
             .then(res => {
+                if (res.status === 201) {
+                    trackDispatch({ type: "ADD_TRACK", payload: res.data });
+                }
                 console.log(res);
             })
     }
@@ -28,11 +34,11 @@ export default function Tracker() {
                 </div>
                 <div className="group">
                     <label htmlFor="currentPrice">Current price</label>
-                    <input type="number" id="currentPrice" name="currentPrice" onChange={changeHandler} required />
+                    <input type="number" step="any" id="currentPrice" name="currentPrice" onChange={changeHandler} required />
                 </div>
                 <div className="group">
                     <label htmlFor="desiredPrice">Desired price</label>
-                    <input type="number" id="desiredPrice" name="desiredPrice" onChange={changeHandler} required />
+                    <input type="number" step="any" id="desiredPrice" name="desiredPrice" onChange={changeHandler} required />
                 </div>
                 <input type="submit" value="Track Price" />
             </form>

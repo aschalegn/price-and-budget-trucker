@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BudgetContextProvider from "./contexts/budgetContext"
 import NavBar from './components/NavBar';
 import IsLogedInContextProvider from './contexts/isLogedInContext';
+import TrackContextProvider from './contexts/trackCotext';
+import ThemeContextProvider from './contexts/ThemeContext';
+
 function App() {
+
     return (
         <section className="App">
-            <BudgetContextProvider>
-                <IsLogedInContextProvider>
-                    <NavBar />
-                </IsLogedInContextProvider>
-            </BudgetContextProvider>
+            <ThemeContextProvider>
+            <IsLogedInContextProvider>
+                <BudgetContextProvider>
+                    <TrackContextProvider>
+                        <NavBar />
+                    </TrackContextProvider>
+                </BudgetContextProvider>
+            </IsLogedInContextProvider>
+            </ThemeContextProvider>
         </section>
     );
 }

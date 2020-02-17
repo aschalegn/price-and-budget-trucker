@@ -1,27 +1,58 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-.NavBar{
-    background-color: rgb(230, 114, 94);
-    display: flex;
-    min-height: 7vh;
-    align-items: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.themeToggler {
+    width: 80px;
+    height: 5vh;
+    position: relative;
+    margin-top: 1vh;
+    margin-right: 5%;
+    appearance: none;
+    outline: none;
+    -webkit-appearance: none;
+    background-color: rgb(148, 38, 38);
+    border-radius: 25px;
+    transition: .5s all ease-in-out;
 }
 
-.NavBar ul{
+.themeToggler::before {
+    content: '';
+    position: absolute;
+    border-radius: 25px;
+    width: 40px;
+    height: 5vh;
+    background-color: gainsboro;
+    transition: .5s all ease-in-out;
+}
+
+.themeToggler:checked {
+    background-color: #7461e0;
+}
+
+.themeToggler:checked::before {
+    left: 40px;
+}
+
+.NavBar {
+    display: flex;
+    min-height: 7vh;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: .5s;
+}
+
+.NavBar ul {
     display: flex;
     margin: auto;
 }
 
-.NavBar ul li{
+.NavBar ul li {
     list-style-type: none;
     font-size: 20px;
 }
 
-.NavBar a{
+.NavBar a {
     color: white;
     text-decoration: none;
     margin-left: 15px;
@@ -29,37 +60,36 @@
 
 /*  */
 
-.navShowHide{
+.navShowHide {
     display: flex;
     flex-direction: column;
     display: none;
     margin-left: 60%;
 }
 
-.navPoint{
+.navPoint {
     width: 35px;
     height: 2px;
     background-color: #fff;
     margin-top: 5px;
 }
 
-.navPoint:nth-child(2){
+.navPoint:nth-child(2) {
     margin-left: 10px;
 }
 
-.navPoint:nth-child(3){
+.navPoint:nth-child(3) {
     margin-left: -5px;
 }
 
-@media only screen and (max-width: 650px){
-    .NavBar ul{
+@media only screen and (max-width: 650px) {
+    .NavBar ul {
         display: none;
         flex-direction: column;
         line-height: 1.5;
     }
-    .NavBar .navShowHide{
+    .NavBar .navShowHide {
         display: block;
         margin-left: 35%;
-        
     }
 }

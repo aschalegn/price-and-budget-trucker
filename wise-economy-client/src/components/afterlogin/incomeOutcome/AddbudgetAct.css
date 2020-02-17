@@ -4,7 +4,7 @@
 }
 
 .AddbudgetAct form {
-    background-color: #cecece;
+    background-color: #e9543a;
     min-height: 10vh;
     display: flex;
     justify-content: center;
@@ -22,7 +22,7 @@
 
 .AddbudgetAct form i {
     margin-left: 15px;
-    font-size: 20px;
+    font-size: 25px;
     color: green
 }
 

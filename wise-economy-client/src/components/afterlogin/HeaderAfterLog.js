@@ -3,13 +3,11 @@ import "../css/HeaderAfterLog.css";
 import { BudgetContext } from '../../contexts/budgetContext';
 
 export default function HeaderAfterLog() {
-    const { budgetState } = useContext(BudgetContext);
-    console.log(budgetState.incomes);
-    
+    const { budgetState } = useContext(BudgetContext);  
     const calculateSum = (array) => {
         let sum = 0;
         array.map(element => {
-            sum += element.amount;
+            return sum += element.amount;
         });
         return sum
     }

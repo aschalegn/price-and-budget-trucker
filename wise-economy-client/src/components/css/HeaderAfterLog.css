@@ -14,6 +14,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+
 }
 
 .HeaderAfterLog::before {
@@ -22,10 +23,10 @@
     top: 0;
     bottom: 0;
     width: 100%;
-    height: 30vh;
-    z-index: -5;
+    min-height: 30vh;
+    z-index: 1;
     background-color: black;
-    opacity: .8;
+    opacity: .4;
 }
 
 .HeaderAfterLog div:first-of-type {
@@ -34,7 +35,7 @@
 
 .HeaderAfterLog div {
     z-index: 100;
-    color: whitesmoke;
+    color: --light-mode-textColor;
     font-size: 18px;
     line-height: 1.4;
 }

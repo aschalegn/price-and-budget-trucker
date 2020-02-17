@@ -1,0 +1,14 @@
+{
+    "name":"WiseEconomy",
+    "icons":[
+        {
+            "src":"/icon.webp",
+            "type": "image/webp",
+            "sizes":"192x192"
+        }
+    ],
+
+    "start_url":".",
+    "display":"standalone",
+    "orientation": "portrait"
+}

@@ -23,8 +23,10 @@ app.get("*", (req, res) => {
   res.status(404).send("unknown routing");
 });
 
-mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(con => console.log("connected to the DB"))
+mongoose.connect(process.env.DB_URL, { 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true 
+}).then(con => console.log("connected to the DB"))
   .catch(err => console.log("Problem to connect to the DB"));
 
 app.listen(process.env.PORT, () => {

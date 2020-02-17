@@ -1,0 +1,90 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.Trackers {
+    width: 80%;
+    margin: auto;
+}
+
+.Trackers h2 {
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.Trackers .trackersContainer {
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    grid-gap: 1%;
+}
+.Trackers .addTrack{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    /* color: var(--dark--iconColor); */
+    background-color: rgb(87, 10, 87);
+    
+}
+.Trackers .addTrack_sign{
+    font-size: 50px;
+    display: block;
+    margin-left: 25%;
+}
+
+.Trackers .trackerCard {
+    width: 100%;
+    height: 100%;
+    background-color: whitesmoke;
+    color: black;
+    border: 1px solid tomato;
+    box-shadow: 3px 2px 2px rgb(83, 83, 224);
+    position: relative;
+}
+.Trackers .fa-trash-alt{
+    font-size: 25px;
+    color: rgb(223, 95, 95);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.Trackers .trackerCard .details {
+    width: 90%;
+    margin: auto;
+}
+
+.Trackers .trackerCard h4 {
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+.Trackers .link {
+    word-wrap: break-word;
+}
+
+.Trackers .prices {
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 10%; */
+}
+
+@media only screen and (max-width: 1280px) {
+    .Trackers {
+        width: 90%;
+    }
+    .Trackers .trackersContainer {
+        grid-gap: 2%;
+        grid-template-columns: 47% 47%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .Trackers {
+        width: 90%;
+    }
+    .Trackers .trackersContainer {
+        grid-gap: 2%;
+        grid-template-columns: 95%;
+        margin: auto;
+    }
+}

@@ -1,11 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { BudgetContext } from "../../../contexts/budgetContext";
 import axios from 'axios';
-import "../../css/AddbudgetAct.css";
+import "./AddbudgetAct.css";
 const AddbudgetAct = () => {
-    const { dispatch } = useContext(BudgetContext);
-    const [formvalue, setformvalue] = useState({ type: "INCOME", category: "general", _id: (JSON.parse(localStorage.wiseUser))._id });
-
+    const { budgetDispatch } = useContext(BudgetContext);
+    const [formvalue, setformvalue] = useState({ type: "INCOME", category: "general", _id: localStorage.wiseUser ? (JSON.parse(localStorage.wiseUser))._id : '' });
     const changeHandler = (e) => {
         setformvalue({ ...formvalue, [e.target.name]: e.target.value });
     }
@@ -14,7 +13,7 @@ const AddbudgetAct = () => {
         axios.post(`${formvalue.type}`, formvalue)
             .then(res => {
                 if (res.status === 201) {
-                    dispatch({ type: `ADD_${formvalue.type}`, payload: res.data });
+                    budgetDispatch({ type: `ADD_${formvalue.type}`, payload: res.data });
                 }
             })
             .catch(err => console.log("Error:***  ", err));

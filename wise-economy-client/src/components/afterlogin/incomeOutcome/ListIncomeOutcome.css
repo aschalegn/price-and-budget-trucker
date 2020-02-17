@@ -27,7 +27,7 @@ body{
     display: flex;
     width: 90%;
     margin: auto;
-    border-bottom: 1px rgb(148, 144, 144) solid;
+    
     }
 
 .ListIncomeOutcome section .item_container h2{
@@ -36,7 +36,7 @@ body{
 }
 
 .ListIncomeOutcome section .item_container:nth-child(odd){
-    background-color: rgb(228, 227, 227);
+    background-color: #393E46;
 }
 
 @media only screen and (max-width:768px){
