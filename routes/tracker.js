@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
     if (!auth.isLogedIn) {
-        res.send("UnAuthorised")
+        res.send("UnAuthorised");
         return
     }
 
@@ -29,19 +29,13 @@ router.post("/", (req, res) => {
                 desiredPrice: req.body.desiredPrice,
                 platform: 'amazon'
             });
-
-            newTracker.user = user;
             newTracker.save();
+
             if (newTracker) {
-                console.log('tracker saved');
                 user.trackers.push(newTracker);
                 user.save();
-                console.log("Added to user");
-                console.log({newTracker});
-                
                 res.status(201).send(newTracker);
-
-                // Scraper.scrapOnAdding(newTracker);
+                Scraper.scrapOnAdding(newTracker);
                 return
             } else {
                 res.send("not added");
@@ -91,8 +85,6 @@ router.delete("/:track_id/:user_id", (req, res) => {
                 return res.sendStatus(500);
             }
             if (track) {
-                console.log(track._id);
-
                 user.trackers = user.trackers.filter(tracker => {
                     return tracker._id != req.params.track_id
                 })

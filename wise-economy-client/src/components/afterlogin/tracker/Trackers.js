@@ -4,6 +4,7 @@ import { TrackContext } from '../../../contexts/trackCotext';
 import "./Tracker.css";
 import Axios from 'axios';
 import { isLogedInContext } from '../../../contexts/isLogedInContext';
+import TrackerTicket from './TrackerTicket';
 
 const Trackers = props => {
     const [addnew, setAddnew] = useState(false)
@@ -13,7 +14,7 @@ const Trackers = props => {
     const deleteTrack = id => {
         if (window.confirm("you sure you want to delete the tracker")) {
             console.log(userStatus.user._id);
-            
+
             Axios.delete(`/tracker/${id}/${userStatus.user._id}`)
                 .then(res => {
                     if (res.status === 200) {
@@ -29,24 +30,12 @@ const Trackers = props => {
         }
     }
 
-
     return (
         <section className="Trackers">
             <h2>Products you are Tracking After</h2>
             <section className="trackersContainer">
-                {track.map((track, i) =>
-                    <div key={i} className="trackerCard">
-                        <i className="far fa-trash-alt" onClick={() => {deleteTrack(track._id)}}></i>
-                        <div className="details">
-                            <h4>{track.title}</h4>
-                            <p className="prices">
-                                <span>Last Price: {} </span>
-                                <span> Starting Price: {track.currentPrice}$</span>
-                                <span> Desired Price: {track.desiredPrice}$</span>
-                            </p>
-                            <p> <a className="link" href={track.url}>Buy</a> </p>
-                        </div>
-                    </div>
+                {track.map((singleTrack, i) =>
+                    <TrackerTicket key={i} deleteTrack={deleteTrack} singleTrack={singleTrack} />
                 )}
             </section>
             <section>

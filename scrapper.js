@@ -16,8 +16,8 @@ scrap = async () => {
     });
     await browser.close();
     console.log(result);
-
 };
+
 const readWrite = (result) => {
     fs.readFile("scrapped.txt", "utf8", (err, data) => {
         if (err) return "The is Error reading the file";
@@ -31,6 +31,7 @@ const readWrite = (result) => {
 }
 
 module.exports.scrapOnAdding = async (track) => {
+    // console.log({track});
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(track.url);
@@ -39,18 +40,18 @@ module.exports.scrapOnAdding = async (track) => {
         const title = document.querySelector("span#productTitle").innerText;
         const price = document.querySelector("span#priceblock_ourprice").innerText;
         const image = document.querySelector("#imgTagWrapperId img").src;
-        Tracker.findByIdAndUpdate(track._id, { image: image, title: title, price: price })
-            .then(track => {
-                console.log({track});
-                
-                // readWrite(track);
-            }).catch(err => {
-                console.log(err);
-
-            });
         return { title, price, image }
     });
-    console.log(result);
+    updateDB(track);
+}
+
+const updateDB = track => {
+    Tracker.findByIdAndUpdate(track._id, { image: result.image, title: result.title, price: result.price })
+        .then(track => {
+            console.log({ track });
+        }).catch(err => {
+            console.log(err);
+        });
 }
 
 const scrapJob = new Cronjob("39 * * * * *", () => {
