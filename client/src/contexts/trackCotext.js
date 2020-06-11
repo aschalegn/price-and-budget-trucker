@@ -17,7 +17,6 @@ const TrackContextProvider = props => {
                 console.log(err);
             });
         }
-
     }, [userStatus]);
 
     return (

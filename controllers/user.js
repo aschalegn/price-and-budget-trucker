@@ -56,7 +56,7 @@ module.exports.logInUser = (req, res) => {
                      return
                   }
                   res.cookie("wiseeconomy", token, { maxAge: 1254545454 });
-                  User.findById(user._id).populate("trackers").populate("incomes").populate("outcomes")
+                  User.findById(user._id).populate("trackers incomes outcomes")
                      .exec((err, user) => {
                         if (err) {
                            console.log("Error:***", err);

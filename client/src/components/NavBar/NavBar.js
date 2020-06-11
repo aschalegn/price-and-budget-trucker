@@ -1,15 +1,15 @@
 import React, { useState, useContext, Fragment } from 'react';
-import "./css/NavBar.css";
+import "./NavBar.css";
 import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
-import HomeAfterLogIn from "./afterlogin/HomeAfterLogIn";
-import HomeBeforLogin from "./beforelogin/HomeBeforLogin";
-import About from './About';
-import Trackers from './afterlogin/tracker/Trackers';
-import Page404 from './Page404';
-import { isLogedInContext } from '../contexts/isLogedInContext';
-import Login from './beforelogin/Login';
-import Signin from './beforelogin/Signin';
-import { ThemeContext } from '../contexts/ThemeContext';
+import HomeAfterLogIn from "../afterlogin/Home/HomeAfterLogIn";
+import HomeBeforLogin from "../beforelogin/HomeBeforLogin";
+import About from '../About/About';
+import Trackers from '../afterlogin/tracker/Trackers';
+import Page404 from '../Page404';
+import { isLogedInContext } from '../../contexts/isLogedInContext';
+import Login from '../beforelogin/Login';
+import Signin from '../beforelogin/Signin';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 const NavBar = props => {
     const [smallScreen, setsmallScreen] = useState(false);

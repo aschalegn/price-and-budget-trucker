@@ -31,7 +31,6 @@ const readWrite = (result) => {
 }
 
 module.exports.scrapOnAdding = async (track) => {
-    // console.log({track});
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(track.url);
@@ -42,10 +41,10 @@ module.exports.scrapOnAdding = async (track) => {
         const image = document.querySelector("#imgTagWrapperId img").src;
         return { title, price, image }
     });
-    updateDB(track);
+    updateDB(track, result);
 }
 
-const updateDB = track => {
+const updateDB = (track, result) => {
     Tracker.findByIdAndUpdate(track._id, { image: result.image, title: result.title, price: result.price })
         .then(track => {
             console.log({ track });

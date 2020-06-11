@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios';
 import { isLogedInContext } from '../../contexts/isLogedInContext';
-import "../css/SigninLogin.css"
+import "./SigninLogin.css"
 import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 export default function Login() {

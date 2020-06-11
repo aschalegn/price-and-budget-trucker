@@ -1,7 +1,7 @@
 import React from 'react';
 import { images } from "./sliderIMages";
 import { Carousel } from "react-bootstrap"
-import "../css/imageslider.css";
+import "./imageslider.css";
 export default function HeaderBeforeLogin() {
 
     return (

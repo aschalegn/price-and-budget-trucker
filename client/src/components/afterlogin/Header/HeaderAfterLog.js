@@ -1,6 +1,6 @@
 import React, { useContext} from 'react'
-import "../css/HeaderAfterLog.css";
-import { BudgetContext } from '../../contexts/budgetContext';
+import "./HeaderAfterLog.css";
+import { BudgetContext } from '../../../contexts/budgetContext';
 
 export default function HeaderAfterLog() {
     const { budgetState } = useContext(BudgetContext);  
@@ -13,7 +13,7 @@ export default function HeaderAfterLog() {
     }
 
     const INCOM_SUM = calculateSum(budgetState.incomes);
-    const OUTCOME_SUM = calculateSum(budgetState.outcomes);
+    const OUTCOME_SUM = calculateSum(budgetState.outcomes) | 0;
     const Total = INCOM_SUM - OUTCOME_SUM;
 
     let red_style = { color: "#c21010" }

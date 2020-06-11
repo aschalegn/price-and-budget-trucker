@@ -18,15 +18,16 @@
     grid-template-columns: 32% 32% 32%;
     grid-gap: 1%;
 }
-.Trackers .addTrack{
+
+.Trackers .addTrack {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     /* color: var(--dark--iconColor); */
     background-color: rgb(87, 10, 87);
-    
 }
-.Trackers .addTrack_sign{
+
+.Trackers .addTrack_sign {
     font-size: 50px;
     display: block;
     margin-left: 25%;
@@ -41,13 +42,20 @@
     box-shadow: 3px 2px 2px rgb(83, 83, 224);
     position: relative;
 }
-.Trackers .fa-trash-alt{
+
+.Trackers .trackerCard img {
+    width: 90%;
+    margin: auto;
+}
+
+.Trackers .fa-trash-alt {
     font-size: 25px;
     color: rgb(223, 95, 95);
     position: absolute;
     right: 10px;
     top: 10px;
 }
+
 .Trackers .trackerCard .details {
     width: 90%;
     margin: auto;

@@ -1,0 +1,16 @@
+.About{
+    width: 70%;
+    margin: auto;
+    font-size: 16px;
+
+}
+
+
+.About img{
+    width: 70%;
+}
+
+.About img:nth-child(odd){
+    margin-right: 0;
+    /* padding: 100px; */
+}

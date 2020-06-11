@@ -4,7 +4,7 @@ import { TrackContext } from '../../../contexts/trackCotext';
 import "./Tracker.css";
 import Axios from 'axios';
 import { isLogedInContext } from '../../../contexts/isLogedInContext';
-import TrackerTicket from './TrackerTicket';
+import TrackerCard from './TrackerCard';
 
 const Trackers = props => {
     const [addnew, setAddnew] = useState(false)
@@ -35,7 +35,7 @@ const Trackers = props => {
             <h2>Products you are Tracking After</h2>
             <section className="trackersContainer">
                 {track.map((singleTrack, i) =>
-                    <TrackerTicket key={i} deleteTrack={deleteTrack} singleTrack={singleTrack} />
+                    <TrackerCard key={i} deleteTrack={deleteTrack} singleTrack={singleTrack} />
                 )}
             </section>
             <section>
