@@ -9,7 +9,7 @@ const trackerRoute = require("./routes/tracker");
 const path = require('path');
 require("dotenv").config();
 app.use(express.json());
-let publicdir = path.join(__dirname, '', 'client/build');
+let publicdir = path.join(__dirname, 'client', 'build');
 app.use(express.static(publicdir));
 
 //routes
@@ -20,7 +20,7 @@ app.use("/api/tracker", trackerRoute);
 app.use("/api/user", userRoute);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'));
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
 mongoose.connect(process.env.DB_URL, {
