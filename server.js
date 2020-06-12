@@ -20,7 +20,7 @@ app.use("/api/tracker", trackerRoute);
 app.use("/api/user", userRoute);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
 
 mongoose.connect(process.env.DB_URL, {
