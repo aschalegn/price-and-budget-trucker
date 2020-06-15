@@ -22,7 +22,7 @@ if (process.env.NODE_ENV == "production") {
   let publicdir = path.join(__dirname, 'client', 'build');
   app.use(express.static(publicdir));
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, './client/build/index.html'));
+    res.sendFile('index.html', { publicdir });
   });
 }
 mongoose.connect(process.env.DB_URL, {
