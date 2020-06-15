@@ -9,8 +9,7 @@ const trackerRoute = require("./routes/tracker");
 const path = require('path');
 require("dotenv").config();
 app.use(express.json());
-let publicdir = path.join(__dirname, 'client', 'build');
-app.use(express.static(publicdir));
+
 
 //routes
 app.use(cookieParser());
@@ -19,10 +18,13 @@ app.use("/api/outcome", outcomeRoute);
 app.use("/api/tracker", trackerRoute);
 app.use("/api/user", userRoute);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, './client/build/index.html'));
-});
-
+if (process.env.NODE_ENV == "production") {
+  let publicdir = path.join(__dirname, 'client', 'build');
+  app.use(express.static(publicdir));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, './client/build/index.html'));
+  });
+}
 mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
