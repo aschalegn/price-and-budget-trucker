@@ -18,13 +18,14 @@ app.use("/api/outcome", outcomeRoute);
 app.use("/api/tracker", trackerRoute);
 app.use("/api/user", userRoute);
 
-if (process.env.NODE_ENV == "production") {
+// if (process.env.NODE_ENV == "production") {
   let publicdir = path.join(__dirname, 'client', 'build');
   app.use(express.static(publicdir));
   app.get("*", (req, res) => {
     res.sendFile('index.html', { publicdir });
   });
-}
+// }
+
 mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true

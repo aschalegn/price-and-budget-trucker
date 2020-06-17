@@ -6,13 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build",
     "server": "nodemon server.js",
-    "client": "cd client&& npm start",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Node.JS, react, mern, MongoDB"],
+  "author": "Aschaley Ascheneke",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
