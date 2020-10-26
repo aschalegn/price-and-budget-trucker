@@ -10,7 +10,6 @@ const path = require('path');
 require("dotenv").config();
 app.use(express.json());
 
-
 //routes
 app.use(cookieParser());
 app.use("/api/income", incomeRoute);
@@ -18,13 +17,11 @@ app.use("/api/outcome", outcomeRoute);
 app.use("/api/tracker", trackerRoute);
 app.use("/api/user", userRoute);
 
-// if (process.env.NODE_ENV == "production") {
-  let publicdir = path.join(__dirname, 'client', 'build');
-  app.use(express.static(publicdir));
-  app.get("*", (req, res) => {
-    res.sendFile('index.html', { publicdir });
-  });
-// }
+let publicdir = path.join(__dirname, 'client', 'build');
+app.use(express.static(publicdir));
+app.get("*", (req, res) => {
+  res.sendFile('index.html', { publicdir });
+});
 
 mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,

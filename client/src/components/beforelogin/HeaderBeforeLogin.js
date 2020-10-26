@@ -9,7 +9,7 @@ export default function HeaderBeforeLogin() {
             <Carousel>
                 {images.map((image, i) =>
                     <Carousel.Item className="carousale_item" key={i}>
-                        <img src={image.src} alt='childer education' className="d-block w-100"/>
+                        <img src={image.image} alt='childer education' className="d-block w-100"/>
                         <Carousel.Caption>
                             <h1>{image.text}</h1>
                         </Carousel.Caption>

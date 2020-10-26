@@ -2,9 +2,9 @@ import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import { feature } from "topojson"
 import "../css/WorldMap.css";
-const Chart = props => {
+const Chart = () => {
    const width = 900;
-   const height = 800;
+   const height = 600;
 
    const chardiv = useRef(null);
 
@@ -42,10 +42,10 @@ const Chart = props => {
       }
    };
 
-   drawMap();
    useEffect(() => {
       drawMap();
    });
+   
    return (
       <section className="WorldMap">
          <svg ref={chardiv}></svg>

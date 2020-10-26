@@ -1,13 +1,13 @@
 import React from 'react'
 import HeaderBeforeLogin from './HeaderBeforeLogin'
-// import Chart from './Chart'
+import Chart from './Chart'
 import { Container, Row, Col } from 'react-bootstrap'
 
 export default function HomeBeforLogin() {
     return (
         <section>
             <HeaderBeforeLogin />
-            {/* <Chart /> */}
+            <Chart />
             <Container>
                 <h2 className="text-center" mt={2}>You Controll Your Economic Futute</h2>
                 <Row>
@@ -21,7 +21,6 @@ export default function HomeBeforLogin() {
                             <b>No Mather what is your purpose it is Reachable</b>
                         </p>
                     </Col>
-
                 </Row>
 
                 <Row className="mt-5">
@@ -35,7 +34,6 @@ export default function HomeBeforLogin() {
                             we track the product price and update you when it get to the desired price.
                         </p>
                     </Col>
-
                 </Row>
                 <Row className="mt-5">
                     <Col>

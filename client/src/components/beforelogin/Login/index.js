@@ -1,13 +1,14 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios';
-import { isLogedInContext } from '../../contexts/isLogedInContext';
-import "./SigninLogin.css"
 import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
+import { isLogedInContext } from '../../../contexts/isLogedInContext';
+import "../SigninLogin.css"
+
 export default function Login() {
     const [formData, setFormData] = useState();
     const [isLoged_in, setisLoged_in] = useState(false);
-    const { user, userDispatch } = useContext(isLogedInContext);
+    const { userDispatch } = useContext(isLogedInContext);
 
     const changeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });

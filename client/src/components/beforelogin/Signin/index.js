@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import Axios from 'axios';
-import { isLogedInContext } from '../../contexts/isLogedInContext';
-import "./SigninLogin.css";
+import { isLogedInContext } from '../../../contexts/isLogedInContext';
+import "../SigninLogin.css";
 import { Button } from 'react-bootstrap';
 
 export default function Signin() {

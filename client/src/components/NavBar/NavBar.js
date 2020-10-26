@@ -1,34 +1,32 @@
 import React, { useState, useContext, Fragment } from 'react';
 import "./NavBar.css";
 import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
+import { isLogedInContext } from '../../contexts/isLogedInContext';
 import HomeAfterLogIn from "../afterlogin/Home/HomeAfterLogIn";
-import HomeBeforLogin from "../beforelogin/HomeBeforLogin";
+import HomeBeforLogin from "../beforelogin";
 import About from '../About/About';
 import Trackers from '../afterlogin/tracker/Trackers';
 import Page404 from '../Page404';
-import { isLogedInContext } from '../../contexts/isLogedInContext';
-import Login from '../beforelogin/Login';
-import Signin from '../beforelogin/Signin';
+import Login from '../beforelogin/Login/index';
+import Signin from '../beforelogin/Signin/index';
 import { ThemeContext } from '../../contexts/ThemeContext';
 
-const NavBar = props => {
+const NavBar = () => {
     const [smallScreen, setsmallScreen] = useState(false);
     const { userStatus, userDispatch } = useContext(isLogedInContext);
     const { theme, toggleTheme } = useContext(ThemeContext);
     let mainstyle = {}
 
-    {
-        theme.isDark ?
-            mainstyle = {
-                backgroundColor: theme.dark.background, color: theme.dark.color
-                , navstyle: { backgroundColor: theme.dark.navBackground }
-            }
-            :
-            mainstyle = {
-                backgroundColor: theme.light.background, color: theme.light.color
-                , navstyle: { backgroundColor: theme.light.navBackground }
-            }
-    }
+    theme.isDark ?
+        mainstyle = {
+            backgroundColor: theme.dark.background, color: theme.dark.color
+            , navstyle: { backgroundColor: theme.dark.navBackground }
+        }
+        :
+        mainstyle = {
+            backgroundColor: theme.light.background, color: theme.light.color
+            , navstyle: { backgroundColor: theme.light.navBackground }
+        }
 
     return (
         <BrowserRouter>
@@ -48,7 +46,7 @@ const NavBar = props => {
                             <li> <Link to="/tracker">Track Price</Link> </li>
                             <li onClick={() => {
                                 localStorage.removeItem('wiseUser');
-                                userDispatch({type:"LOGOUT_USER"})
+                                userDispatch({ type: "LOGOUT_USER" })
                             }}>
                                 <Link to="/">Log Out</Link> </li>
                         </Fragment>

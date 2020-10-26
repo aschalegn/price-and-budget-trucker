@@ -4,17 +4,17 @@
 }
 
 .WorldMap .sphere{
-   fill: #3333ac;
+   fill: #3345ac;
     margin: 0;
     overflow: hidden;
 }
 
 .WorldMap .country{
-    fill: lightgreen;
+    fill: rgb(132, 202, 67);
     stroke: black;
     stroke-opacity: 0.2;
 }
 
 .WorldMap .country:hover{
-    fill: darkgoldenrod;
+    fill: rgb(218, 113, 15);
 }
