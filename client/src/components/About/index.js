@@ -11,7 +11,7 @@ export default function About() {
                 Iusto, mollitia. Ipsam quibusdam voluptatem praesentium sequi.
                 Maxime quae alias aliquid! Illum, cum libero!
                 Laboriosam et dicta facilis molestiae eos debitis?<br />
-                <img src="images/1.webp" alt="image 1" /> <br /> <br />
+                <img src="images/1.webp" alt="about" /> <br /> <br />
 
                 Sapiente, enim! Animi ullam id consequatur eos?
                 Voluptate vero nobis quis neque, fuga exercitationem.
@@ -19,7 +19,7 @@ export default function About() {
                 Magnam in modi animi quae sint autem.
                 Fuga dicta labore saepe qui molestiae quibusdam.
                 Accusamus qui quaerat minima illo porro eius!<br />
-                <img src="images/2.webp" alt="image 1" /> <br /> <br />
+                <img src="images/2.webp" alt="about" /> <br /> <br />
                 Accusantium dignissimos, maxime corrupti aliquid officiis fugit.
                 Incidunt quod sapiente architecto eaque ut aut!
                 Fugiat neque odio laudantium. Facilis, qui earum!

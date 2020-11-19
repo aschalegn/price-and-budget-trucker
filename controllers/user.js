@@ -20,7 +20,7 @@ module.exports.createUser = async (req, res) => {
                         else {
                            user.password = hash;
                            user.save();
-                           res.status(201).send(user);
+                           res.status(201).send({ _id: user._id });
                         }
                      });
                   }
@@ -28,10 +28,8 @@ module.exports.createUser = async (req, res) => {
             });
       }
       else {
-         console.log("User Already Exist");
          res.status(303).send("user Already exist")
       }
-
    } catch (error) {
       console.log(error);
    }
@@ -40,31 +38,32 @@ module.exports.createUser = async (req, res) => {
 }
 
 module.exports.logInUser = (req, res) => {
-   User.findOne({ email: req.params.email }).select("_id password fullName trackers")
+   const { email, password } = req.query;
+   User.findOne({ email: email }).select("_id email password")
       .exec((err, user) => {
-         bcrypt.compare(req.params.password, user.password, function (err, isMatch) {
+         bcrypt.compare(password, user.password, function (err, isMatch) {
             if (err) {
-               console.log(err);
                res.status(500).send("there an error");
                return
             }
-            if (isMatch) {
+            else if (isMatch) {
                jwt.sign({ email: user.email, password: user.password }, tokenSecret, (err, token) => {
                   if (err) {
-                     console.log(err);
                      res.status(500).send("there an error");
                      return
                   }
-                  res.cookie("wiseeconomy", token, { maxAge: 1254545454 });
-                  User.findById(user._id).populate("trackers incomes outcomes")
+
+                  User.findById(user._id, { password: 0 }).populate("trackers incomes outcomes")
                      .exec((err, user) => {
                         if (err) {
                            console.log("Error:***", err);
-                           return
+                           return false
                         }
-                        user ?
-                           res.status(200).send(user)
-                           : res.send("User Not Found");
+                        else if (user) {
+                           res.cookie("wiseeconomy", token, { maxAge: 1254545454 });
+                           res.status(200).send(user);
+                        }
+                        else return res.status(500).send("User Not Found");
                      });
                });
             }

@@ -9,7 +9,7 @@ router.post("/signin", (req, res) => {
     }
 });
 
-router.get("/login/:email/:password", (req, res) => {
+router.get("/login", (req, res) => {
     try {
         controller.logInUser(req, res);
     } catch (error) {

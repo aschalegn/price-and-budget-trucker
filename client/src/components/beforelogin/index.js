@@ -12,7 +12,7 @@ export default function HomeBeforLogin() {
                 <h2 className="text-center" mt={2}>You Controll Your Economic Futute</h2>
                 <Row>
                     <Col>
-                        <img width="300" height="200" src="https://cdn.pixabay.com/photo/2016/04/20/08/21/entrepreneur-1340649__340.jpg" />
+                        <img alt="no content" width="300" height="200" src="https://cdn.pixabay.com/photo/2016/04/20/08/21/entrepreneur-1340649__340.jpg" />
                     </Col>
                     <Col className="align-center">
                         <p>
@@ -25,7 +25,7 @@ export default function HomeBeforLogin() {
 
                 <Row className="mt-5">
                     <Col>
-                        <img width="300" height="200" src="https://cdn.pixabay.com/photo/2016/04/20/08/21/entrepreneur-1340649__340.jpg" />
+                        <img alt="no content" width="300" height="200" src="https://cdn.pixabay.com/photo/2016/04/20/08/21/entrepreneur-1340649__340.jpg" />
                     </Col>
                     <Col><h3>Track Price</h3>
                         <p>
@@ -37,7 +37,7 @@ export default function HomeBeforLogin() {
                 </Row>
                 <Row className="mt-5">
                     <Col>
-                        <img width="300" height="200" src="https://cdn.pixabay.com/photo/2016/04/20/08/21/entrepreneur-1340649__340.jpg" />
+                        <img alt="no content" width="300" height="200" src="https://cdn.pixabay.com/photo/2016/04/20/08/21/entrepreneur-1340649__340.jpg" />
                     </Col>
                     <Col>
                         <h4>Mannage Your Badget</h4>

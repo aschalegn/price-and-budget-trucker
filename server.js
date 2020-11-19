@@ -7,15 +7,18 @@ const outcomeRoute = require("./routes/outcome");
 const userRoute = require("./routes/user");
 const trackerRoute = require("./routes/tracker");
 const path = require('path');
+const { isLogedIn } = require("./controllers/user");
 require("dotenv").config();
 app.use(express.json());
 
 //routes
 app.use(cookieParser());
+app.use("/api/user", userRoute);
+app.use(isLogedIn)
 app.use("/api/income", incomeRoute);
 app.use("/api/outcome", outcomeRoute);
 app.use("/api/tracker", trackerRoute);
-app.use("/api/user", userRoute);
+app.use("/api/setting", userRoute);
 
 let publicdir = path.join(__dirname, 'client', 'build');
 app.use(express.static(publicdir));

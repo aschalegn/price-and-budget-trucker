@@ -3,7 +3,7 @@ const Tracker = require("../models/tracker");
 const trackerPlatform = require('../controllers/addToScanePlatform')
 const User = require("../models/user");
 const auth = require("../controllers/user");
-const Scraper = require("../scrapper");
+const Scraper = require("../scrapping/scrapper");
 
 router.get("/", (req, res) => {
     res.send("this is the get route")

@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useReducer } from 'react'
-export const isLogedInContext = createContext(null);
+export const userContext = createContext(null);
 const userReducer = (state, action) => {
     switch (action.type) {
         case "LOGIN_USER":
@@ -11,7 +11,7 @@ const userReducer = (state, action) => {
     }
 }
 
-const IsLogedInContextProvider = props => {
+const UserContextProvider = props => {
     const initialstate = {
         isLogegedIn: false,
         user: {}
@@ -21,14 +21,14 @@ const IsLogedInContextProvider = props => {
     useEffect(() => {
         if (document.cookie && localStorage.wiseUser) {
             userDispatch({ type: "LOGIN_USER", payload: JSON.parse(localStorage.wiseUser) })
-        }
+        } else if (!document.cookie){}
     }, []);
 
     return (
-        <isLogedInContext.Provider value={{ userStatus, userDispatch }}>
+        <userContext.Provider value={{ userStatus, userDispatch }}>
             {props.children}
-        </isLogedInContext.Provider>
+        </userContext.Provider>
     );
 }
 
-export default IsLogedInContextProvider;
+export default UserContextProvider;

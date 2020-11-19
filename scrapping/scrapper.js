@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
-const Tracker = require("./models/tracker");
+const Tracker = require("../models/tracker");
 const Cronjob = require("cron").CronJob;
 
 scrap = async () => {

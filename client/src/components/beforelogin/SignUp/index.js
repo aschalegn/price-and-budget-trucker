@@ -1,12 +1,14 @@
 import React, { useState, useContext } from 'react'
 import Axios from 'axios';
-import { isLogedInContext } from '../../../contexts/isLogedInContext';
+import { userContext } from '../../../contexts/userContext';
 import "../SigninLogin.css";
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-export default function Signin() {
+export default function SignUp() {
     const [formData, setFormData] = useState();
-    const { dispach } = useContext(isLogedInContext);
+    const { dispach } = useContext(userContext);
+    const [isExist, setIsExist] = useState(false);
 
     const changeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,7 +18,10 @@ export default function Signin() {
         e.preventDefault();
         Axios.post("user/signin", formData)
             .then(res => {
-                if (res.status === 200) {
+                if (res.status === 303) {
+                    setIsExist(true)
+                }
+                else if (res.status === 200) {
                     dispach({ type: "", payload: res.data });
                 }
             });
@@ -26,7 +31,7 @@ export default function Signin() {
         <section className="Signin">
             <p>.</p>
             <form onSubmit={signUser}>
-                <h3 className="text-center">Sigin</h3>
+                <h3 className="text-center">Create your new user</h3>
                 <div className="group">
                     <label htmlFor="fullName">Full Name</label>
                     <input type="text" id="fullName" name="fullName" placeholder="Full Name" onChange={changeHandler} required />
@@ -44,6 +49,11 @@ export default function Signin() {
                     <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" onChange={changeHandler} required autoComplete="off" />
                 </div>
                 <Button type="submit" className="center-block">Sign IN </Button>
+                {isExist ?
+                    <div>
+                        <h3>user exists pleas try to <Link to="/login">login</Link></h3>
+                    </div> 
+                    : ''}
             </form>
         </section>
 

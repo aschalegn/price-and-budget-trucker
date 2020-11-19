@@ -6,7 +6,7 @@ export default function TrackerCard(props) {
             <i className="far fa-trash-alt" onClick={() => { props.deleteTrack(props.singleTrack._id) }}></i>
             <div className="details">
                 <h4>{props.singleTrack.title}</h4>
-                <img src={props.singleTrack.image} />
+                <img src={props.singleTrack.image} alt={props.singleTrack.title}/>
                 <p className="prices">
                     <span>Last Price: {props.singleTrack.price} </span>
                     <span> Starting Price: {props.singleTrack.currentPrice}$</span>

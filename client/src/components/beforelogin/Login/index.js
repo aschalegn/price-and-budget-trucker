@@ -2,35 +2,35 @@ import React, { useState, useContext } from 'react'
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
-import { isLogedInContext } from '../../../contexts/isLogedInContext';
-import "../SigninLogin.css"
+import { userContext } from '../../../contexts/userContext';
+import "../SigninLogin.css";
 
 export default function Login() {
     const [formData, setFormData] = useState();
-    const [isLoged_in, setisLoged_in] = useState(false);
-    const { userDispatch } = useContext(isLogedInContext);
+    const { userDispatch, userStatus } = useContext(userContext);
 
     const changeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
-    const loinUser = (e) => {
+    const submitHandler = (e) => {
         e.preventDefault();
-        axios.get(`user/login/${formData.email}/${formData.password}`)
+        axios.get(`/user/login`, { params: formData })
             .then(res => {
+                console.log(res);
                 if (res.status === 200) {
+                    console.log(res.data);
                     localStorage.wiseUser = JSON.stringify(res.data);
-                    setisLoged_in(true);
-                    userDispatch({ type: "LOGIN_USER", payload: JSON.parse(localStorage.wiseUser) });
+                    userDispatch({ type: "LOGIN_USER", payload: res.data });
                 }
             });
     }
 
     return (
         <section className="Login">
-            {isLoged_in ? <Redirect to="/" /> : ''}
+            {userStatus.isLogegedIn ? <Redirect to="/" /> : ''}
             <p>.</p>
-            <form onSubmit={loinUser}>
+            <form onSubmit={submitHandler}>
                 <div className="group">
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="E-mail" onChange={changeHandler} required />
