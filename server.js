@@ -14,7 +14,6 @@ app.use(express.json());
 //routes
 app.use(cookieParser());
 app.use("/api/user", userRoute);
-app.use(isLogedIn)
 app.use("/api/income", incomeRoute);
 app.use("/api/outcome", outcomeRoute);
 app.use("/api/tracker", trackerRoute);
@@ -22,7 +21,11 @@ app.use("/api/setting", userRoute);
 
 let publicdir = path.join(__dirname, 'client', 'build');
 app.use(express.static(publicdir));
+
+app.get("/", (req, res) => { res.send("kdjghfkljsd")});
+
 app.get("*", (req, res) => {
+  console.log("here");
   res.sendFile('index.html', { publicdir });
 });
 
@@ -34,5 +37,5 @@ mongoose.connect(process.env.DB_URL, {
 const PORT = process.env.PORT | 2000;
 
 app.listen(PORT, () => {
-  console.log(`server is listening on port : ${process.env.PORT}`);
+  console.log(`server is listening on port : ${PORT}`);
 });
