@@ -1,10 +1,9 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-
-.Tracker{
+.Tracker {
     text-align: center;
     margin-top: 2vh;
     line-height: 1.5;
@@ -16,5 +15,5 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 .Tracker input[type=number] {
-    -moz-appearance: textfield;
+    -moz-appearance: none;
 }

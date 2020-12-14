@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Income = require("../models/income");
 const User = require("../models/user");
-const auth = require("../controllers/user")
+const auth = require("../controllers/user");
 
 router.post("/", (req, res) => {
     if (!auth.isLogedIn(req)) {
@@ -32,6 +32,7 @@ router.post("/", (req, res) => {
         console.log("*Error:* ", error);
     }
 });
+
 router.get("/", (req, res) => {
     try {
         Income.find()
@@ -48,7 +49,6 @@ router.patch("/:id", (req, res) => {
         const recordId = req.params.id;
         res.send("patch route works");
     } catch (error) {
-        console.log("Error:**  ", error);
         res.send("Problem with the request");
     }
 });

@@ -17,25 +17,24 @@ app.use("/api/user", userRoute);
 app.use("/api/income", incomeRoute);
 app.use("/api/outcome", outcomeRoute);
 app.use("/api/tracker", trackerRoute);
-app.use("/api/setting", userRoute);
+// app.use("/api/setting", userRoute);
 
 let publicdir = path.join(__dirname, 'client', 'build');
 app.use(express.static(publicdir));
 
-app.get("/", (req, res) => { res.send("kdjghfkljsd")});
-
 app.get("*", (req, res) => {
-  console.log("here");
-  res.sendFile('index.html', { publicdir });
+  res.sendFile(path.join(publicdir, índex.json));
 });
 
-mongoose.connect(process.env.DB_URL, {
+const mongoURL = process.env.DB_URL || "mongodb://localhost:27017/budgetTracker";
+
+mongoose.connect(mongoURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(con => console.log("connected to the DB"))
   .catch(err => console.log("Problem to connect to the DB"));
 const PORT = process.env.PORT | 2000;
 
-app.listen(PORT, () => {
+app.listen(2000, () => {
   console.log(`server is listening on port : ${PORT}`);
 });
