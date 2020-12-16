@@ -27,13 +27,13 @@ app.get("*", (req, res) => {
 });
 
 const mongoURL = process.env.DB_URL || "mongodb://localhost:27017/budgetTracker";
-
 mongoose.connect(mongoURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(con => console.log("connected to the DB"))
   .catch(err => console.log("Problem to connect to the DB"));
-const PORT = process.env.PORT | 2000;
+  
+const PORT = process.env.PORT || 2000;
 
 app.listen(2000, () => {
   console.log(`server is listening on port : ${PORT}`);
