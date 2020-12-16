@@ -23,7 +23,7 @@ let publicdir = path.join(__dirname, 'client', 'build');
 app.use(express.static(publicdir));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(publicdir, índex.json));
+  res.sendFile(path.join(publicdir, 'index.html'));
 });
 
 const mongoURL = process.env.DB_URL || "mongodb://localhost:27017/budgetTracker";
